@@ -6,3 +6,7 @@ plugins {
 android {
     namespace = "com.hahow.common"
 }
+
+dependencies {
+    testImplementation(libs.truth)
+}
