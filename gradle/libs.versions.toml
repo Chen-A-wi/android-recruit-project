@@ -5,7 +5,6 @@ composeBom = "2024.05.00"
 buildGradle = "8.4.1"
 espressoCore = "3.5.1"
 ksp = "1.9.23-1.0.20"
-composeDestinations = "2.1.0-beta01"
 
 junit = "1.1.5"
 junit5 = "5.9.3"
@@ -95,11 +94,6 @@ test-koin-junit5 = { module = "io.insert-koin:koin-test-junit5", version.ref = "
 # Coroutines
 coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 test-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
-
-# Navigation
-compose-destinations-core = { module = "io.github.raamcosta.compose-destinations:core", version.ref = "composeDestinations" }
-compose-destinations-ksp = { module = "io.github.raamcosta.compose-destinations:ksp", version.ref = "composeDestinations" }
-compose-destinations-bottom-sheet = { module = "io.github.raamcosta.compose-destinations:bottom-sheet", version.ref = "composeDestinations" }
 
 # Test
 truth = { module = "com.google.truth:truth", version.ref = "truth" }
