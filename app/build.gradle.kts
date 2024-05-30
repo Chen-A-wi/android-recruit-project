@@ -3,6 +3,7 @@ plugins {
     id("plugins.app")
     id("plugins.compose")
     alias(libs.plugins.devtools.ksp)
+    alias(libs.plugins.jetbrains.kotlin)
 }
 
 android {
@@ -21,4 +22,21 @@ android {
             ),
         )
     }
+}
+dependencies {
+    implementation(libs.bundles.material)
+//    implementation(libs.retrofit2)
+//    implementation(project(":common"))
+//    implementation(project(":data"))
+//    implementation(project(":domain"))
+//    implementation(project(":network"))
+
+    //region Compose destinations
+    ksp(libs.compose.destinations.ksp)
+    implementation(libs.compose.destinations.core)
+    implementation(libs.compose.destinations.bottom.sheet)
+    //endregion
+
+    implementation(libs.bundles.paging)
+    testImplementation(libs.test.paging.common)
 }
