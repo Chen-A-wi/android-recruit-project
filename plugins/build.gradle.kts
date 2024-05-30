@@ -14,6 +14,10 @@ gradlePlugin {
             id = "plugins.app"
             implementationClass = "com.hahow.plugins.common.AppPlugin"
         }
+        create("BaseLibPlugin") {
+            id = "plugins.base-lib"
+            implementationClass = "com.hahow.plugins.common.BaseLibPlugin"
+        }
         create("ComposePlugin") {
             id = "plugins.compose"
             implementationClass = "com.hahow.plugins.common.ComposePlugin"

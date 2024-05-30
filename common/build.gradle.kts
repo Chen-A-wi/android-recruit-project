@@ -1,9 +1,8 @@
 plugins {
-    id("java-library")
-    alias(libs.plugins.jetbrains.jvm)
+    alias(libs.plugins.android.library)
+    id(libs.plugins.base.library.get().pluginId)
 }
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_19
-    targetCompatibility = JavaVersion.VERSION_19
+android {
+    namespace = "com.hahow.common"
 }

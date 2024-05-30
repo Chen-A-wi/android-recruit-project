@@ -25,7 +25,7 @@ android {
 }
 dependencies {
     implementation(libs.bundles.material)
-//    implementation(project(":common"))
+    implementation(project(":common"))
 //    implementation(project(":data"))
 //    implementation(project(":domain"))
 //    implementation(project(":network"))

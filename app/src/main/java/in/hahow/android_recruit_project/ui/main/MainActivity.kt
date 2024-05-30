@@ -1,4 +1,4 @@
-package `in`.hahow.android_recruit_project.ui
+package `in`.hahow.android_recruit_project.ui.main
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -21,15 +21,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             AndroidrecruitprojectTheme {
-                Scaffold(
-                    modifier = Modifier.fillMaxSize(),
-                    topBar = { Appbar(titleRes = R.string.lab_Main_title) },
-                ) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding),
-                    )
-                }
+                MainScreen()
             }
         }
     }

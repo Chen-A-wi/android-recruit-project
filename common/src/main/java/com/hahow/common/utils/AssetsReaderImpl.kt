@@ -4,7 +4,13 @@ import java.io.BufferedReader
 import java.io.InputStreamReader
 
 class AssetsReaderImpl : AssetsReader {
-    override fun getFileFromAssets(assetsPath: String): String {
+    /**
+     * 實作 JsonReader
+     * @param assetsPath 檔案路徑 ex: "json/xxx.json"
+     * @return Json 檔案內容
+     * @see [AssetsReader]
+     */
+    override fun getJsonFromAssets(assetsPath: String): String {
         val builder = StringBuilder()
         val reader = BufferedReader(
             InputStreamReader(
