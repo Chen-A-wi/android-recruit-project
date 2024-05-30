@@ -1,4 +1,4 @@
-package com.awilab.plugins.quality
+package com.hahow.plugins.quality
 
 val ktlint: Configuration by configurations.creating
 
