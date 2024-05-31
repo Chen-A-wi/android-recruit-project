@@ -6,4 +6,5 @@ import com.hahow.network.dispatcher.MockWebDispatcher
 
 val networkModule = module {
     singleOf(::MockWebDispatcher)
+    // TODO: OkhttpClient & retrofit
 }
