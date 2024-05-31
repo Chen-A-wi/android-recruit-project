@@ -2,4 +2,8 @@
     <string name="app_name">android-recruit-project</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="lab_Main_title">Hahow homework</string>
+    <string name="lab_over_date">已逾期</string>
+    <string name="cp_between_date">截止日剩 %s 天</string>
+    <string name="cp_due_date">%s 截止</string>
+    <string name="cp_pass_date">%s 通過</string>
 </resources>
