@@ -8,4 +8,11 @@ android {
 }
 
 dependencies {
+    implementation(libs.okhttp)
+    implementation(libs.okhttp.logging)
+    implementation(libs.retrofit2)
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.kotlinx.serialization.retrofit2)
+    implementation(libs.test.mockwebserver)
+    implementation(project(":common"))
 }
