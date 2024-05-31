@@ -26,9 +26,9 @@ android {
 dependencies {
     implementation(libs.bundles.material)
     implementation(project(":common"))
-//    implementation(project(":data"))
-//    implementation(project(":domain"))
-//    implementation(project(":network"))
+    implementation(project(":data"))
+    implementation(project(":domain"))
+    implementation(project(":network"))
 
     implementation(libs.bundles.paging)
     testImplementation(libs.test.paging.common)
