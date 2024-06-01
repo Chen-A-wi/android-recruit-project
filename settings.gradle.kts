@@ -22,3 +22,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "android-recruit-project"
 include(":app")
+include(":common")
+include(":network")
+include(":domain")
+include(":data")
