@@ -4,7 +4,7 @@ import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 import com.hahow.network.dispatcher.MockWebDispatcher
 
-val networkModule = module {
+val networkModules = module {
     singleOf(::MockWebDispatcher)
     // TODO: OkhttpClient & retrofit
 }

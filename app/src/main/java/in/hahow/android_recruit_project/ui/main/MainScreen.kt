@@ -7,9 +7,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import `in`.hahow.android_recruit_project.R
 import `in`.hahow.android_recruit_project.ui.widgets.Appbar
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun MainScreen() {
+fun MainScreen(viewModel: MainViewModel = koinViewModel()) {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = { Appbar(titleRes = R.string.lab_Main_title) },
