@@ -1,23 +1,17 @@
 package `in`.hahow.android_recruit_project.common
 
-import android.app.Application
-import `in`.hahow.android_recruit_project.di.appModules
-import org.koin.android.ext.koin.androidContext
-import org.koin.android.ext.koin.androidLogger
-import org.koin.core.context.startKoin
+import com.hahow.network.MOCK_WEB_SERVER_PORT
+import okhttp3.mockwebserver.MockWebServer
+import org.koin.android.ext.android.inject
+import kotlin.concurrent.thread
 
-class App : Application() {
+class App : BaseApp() {
+   private val mockServer by inject<MockWebServer>()
     override fun onCreate() {
         super.onCreate()
 
-        initKoin()
-    }
-
-    private fun initKoin() {
-        startKoin {
-            androidLogger()
-            androidContext(this@App)
-            modules(appModules)
+        thread {
+            mockServer.start(MOCK_WEB_SERVER_PORT)
         }
     }
 }

@@ -8,39 +8,39 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class CourseSchema(
     @SerialName("accessExpiredReason")
-    val accessExpiredReason: String?,
+    val accessExpiredReason: String? = null,
     @SerialName("averageRating")
-    val averageRating: Int?,
+    val averageRating: Double? = null,
     @SerialName("completionPercentage")
-    val completionPercentage: Double?,
+    val completionPercentage: Double? = null,
     @SerialName("completionStatus")
-    val completionStatus: String?,
+    val completionStatus: String? = null,
     @SerialName("coverImageUrl")
-    val coverImageUrl: String?,
+    val coverImageUrl: String? = null,
     @SerialName("enrolled")
-    val enrolled: Boolean?,
+    val enrolled: Boolean? = null,
     @SerialName("enrollmentsCount")
-    val enrollmentsCount: Int?,
+    val enrollmentsCount: Int? = null,
     @SerialName("id")
-    val id: String?,
+    val id: String? = null,
     @SerialName("lastViewedAt")
-    val lastViewedAt: String?,
+    val lastViewedAt: String? = null,
     @SerialName("level")
-    val level: String?,
+    val level: String? = null,
     @SerialName("recentStartedAssignment")
-    val recentStartedAssignment: RecentStartedAssignmentSchema?,
+    val recentStartedAssignment: RecentStartedAssignmentSchema? = null,
     @SerialName("source")
-    val source: String?,
+    val source: String? = null,
     @SerialName("studiedAt")
-    val studiedAt: String?,
+    val studiedAt: String? = null,
     @SerialName("teacher")
-    val teacher: TeacherSchema?,
+    val teacher: TeacherSchema? = null,
     @SerialName("title")
-    val title: String?,
+    val title: String? = null,
     @SerialName("totalSeconds")
-    val totalSeconds: Int?,
+    val totalSeconds: Int? = null,
     @SerialName("__typename")
-    val typename: String?
+    val typename: String? = null
 )
 
 internal fun List<CourseSchema>.toDomain(): List<Course> = map(CourseSchema::toDomain)

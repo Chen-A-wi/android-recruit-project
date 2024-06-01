@@ -9,8 +9,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import `in`.hahow.android_recruit_project.ui.theme.AndroidrecruitprojectTheme
+import org.koin.androidx.compose.koinViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.component.KoinComponent
+import org.koin.java.KoinJavaComponent.inject
 
-class MainActivity : ComponentActivity() {
+class MainActivity : ComponentActivity(),KoinComponent {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -22,18 +26,10 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier,
-    )
-}
-
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     AndroidrecruitprojectTheme {
-        Greeting("Android")
+//        Greeting("Android")
     }
 }

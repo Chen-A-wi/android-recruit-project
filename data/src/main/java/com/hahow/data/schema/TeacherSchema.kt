@@ -8,9 +8,9 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class TeacherSchema(
     @SerialName("name")
-    val name: String?,
+    val name: String? = null,
     @SerialName("__typename")
-    val typename: String?
+    val typename: String? = null
 )
 
 internal fun TeacherSchema.toDomain() = Teacher(name = name, typename = typename)

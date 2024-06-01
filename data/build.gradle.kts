@@ -9,6 +9,8 @@ android {
 }
 
 dependencies {
+    implementation(libs.retrofit2)
     implementation(libs.kotlinx.serialization.json)
+    implementation(project(":network"))
     implementation(project(":domain"))
 }

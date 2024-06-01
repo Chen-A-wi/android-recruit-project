@@ -8,11 +8,11 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class TimelineSchema(
     @SerialName("dueAt")
-    val dueAt: String?,
+    val dueAt: String? = null,
     @SerialName("startAt")
-    val startAt: String?,
+    val startAt: String? = null,
     @SerialName("__typename")
-    val typename: String?
+    val typename: String? = null
 )
 
 internal fun TimelineSchema.toDomain(): Timeline = Timeline(

@@ -15,7 +15,7 @@ class AssetsReaderImpl : AssetsReader {
         val reader = BufferedReader(
             InputStreamReader(
                 javaClass.classLoader?.getResourceAsStream(assetsPath)
-                    ?: throw IllegalArgumentException("Cannot find File: $assetsPath"),
+                    ?: throw IllegalArgumentException("Read File Failed: $assetsPath"),
             ),
         )
 

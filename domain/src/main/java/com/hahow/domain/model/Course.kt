@@ -2,7 +2,7 @@ package com.hahow.domain.model
 
 data class Course (
     val accessExpiredReason: String?,
-    val averageRating: Int?,
+    val averageRating: Double?,
     val completionPercentage: Double?,
     val completionStatus: String?,
     val coverImageUrl: String?,

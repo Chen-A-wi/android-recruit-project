@@ -13,6 +13,6 @@ dependencies {
     implementation(libs.retrofit2)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.kotlinx.serialization.retrofit2)
-    implementation(libs.test.mockwebserver)
+    api(libs.test.mockwebserver)
     implementation(project(":common"))
 }

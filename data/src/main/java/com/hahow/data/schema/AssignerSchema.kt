@@ -8,11 +8,11 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class AssignerSchema(
     @SerialName("id")
-    val id: String?,
+    val id: String? = null,
     @SerialName("name")
-    val name: String?,
+    val name: String? = null,
     @SerialName("__typename")
-    val typename: String?
+    val typename: String? = null
 )
 
 internal fun List<AssignerSchema?>.toDomain(): List<Assigner?> = mapNotNull { it?.toDomain() }
