@@ -8,19 +8,19 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class RecentStartedAssignmentSchema(
     @SerialName("assigners")
-    val assigners: List<AssignerSchema?>? = null,
+    val assigners: List<AssignerSchema?>?,
     @SerialName("completedAt")
-    val completedAt: String? = null,
+    val completedAt: String?,
     @SerialName("id")
-    val id: String? = null,
+    val id: String?,
     @SerialName("rule")
-    val rule: String? = null,
+    val rule: String?,
     @SerialName("timeline")
-    val timeline: TimelineSchema? = null,
+    val timeline: TimelineSchema?,
     @SerialName("title")
-    val title: String? = null,
+    val title: String?,
     @SerialName("__typename")
-    val typename: String? = null
+    val typename: String?
 )
 
 internal fun RecentStartedAssignmentSchema.toDomain() = RecentStartedAssignment(
