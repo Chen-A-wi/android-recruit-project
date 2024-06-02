@@ -22,6 +22,7 @@ appcompat = "1.7.0"
 material = "1.12.0"
 materialIcon = "1.6.7"
 paging = "3.3.0"
+coil = "2.6.0"
 
 okhttp = "4.12.0"
 retrofit2 = "2.11.0"
@@ -74,6 +75,7 @@ kotlinx-serialization-retrofit2 = { module = "com.jakewharton.retrofit:retrofit2
 # UI
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 material-icon = { module = "androidx.compose.material:material-icons-extended", version.ref = "materialIcon" }
+coil = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 
 # Paging
 paging-runtime = { module = "androidx.paging:paging-runtime", version.ref = "paging" }
