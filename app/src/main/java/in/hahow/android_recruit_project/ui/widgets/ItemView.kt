@@ -20,6 +20,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ProgressIndicatorDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -28,18 +30,20 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Yellow
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import com.hahow.common.extension.orZero
-import com.hahow.domain.model.Course
+import com.hahow.data.local.ItemData
+import com.hahow.data.local.SubscriptType
+import `in`.hahow.android_recruit_project.R
 
 @Composable
 fun ItemView(
-    course: Course
+    course: ItemData
 ) {
     Row(
         modifier = Modifier
@@ -67,7 +71,9 @@ fun ItemView(
 }
 
 @Composable
-fun ImageCover(modifier: Modifier, course: Course) {
+fun ImageCover(modifier: Modifier, course: ItemData) {
+    val tagSubscriptVisible by remember { mutableStateOf(course.subscripts.isVisible) }
+
     Box(
         modifier.padding(start = 8.dp, end = 8.dp, top = 8.dp),
     ) {
@@ -77,36 +83,35 @@ fun ImageCover(modifier: Modifier, course: Course) {
                 shape = RoundedCornerShape(10.dp)
             ),
             model = ImageRequest.Builder(LocalContext.current)
-                .data(course.coverImageUrl)
+                .data(course.imgUrl)
                 .crossfade(true)
                 .build(),
             contentDescription = null,
         )
-        Text(
-            text = "企業課程",
-            modifier = Modifier
-                .align(Alignment.TopStart)
-                .clip(
-                    shape = RoundedCornerShape(topStart = 10.dp, bottomEnd = 10.dp)
-                )
-                .background(Color.Red),
-            fontSize = 12.sp
-        )
-        Text(
-            text = "8天前觀看",
-            modifier = Modifier
-                .align(Alignment.BottomEnd)
-                .clip(
-                    shape = RoundedCornerShape(topStart = 10.dp, bottomEnd = 10.dp)
-                )
-                .background(Color.Red),
-            fontSize = 12.sp
-        )
+        if (tagSubscriptVisible) {
+            Text(
+                text = stringResource(
+                    if (course.subscripts.type == SubscriptType.BY) {
+                        R.string.cp_by
+                    } else {
+                        R.string.cp_review_before
+                    }, course.subscripts.cpValue
+                ),
+                modifier = Modifier
+                    .align(Alignment.BottomEnd)
+                    .clip(
+                        shape = RoundedCornerShape(topStart = 10.dp, bottomEnd = 10.dp)
+                    )
+                    .background(Color.DarkGray)
+                    .padding(horizontal = 4.dp),
+                fontSize = 12.sp
+            )
+        }
     }
 }
 
 @Composable
-fun ProgressBarLayout(modifier: Modifier, course: Course) {
+fun ProgressBarLayout(modifier: Modifier, course: ItemData) {
     Row(
         modifier = modifier
             .padding(start = 8.dp)
@@ -120,7 +125,7 @@ fun ProgressBarLayout(modifier: Modifier, course: Course) {
                 .clip(
                     shape = RoundedCornerShape(6.dp)
                 ),
-            progress = { course.completionPercentage?.toFloat().orZero() },
+            progress = { course.progressValue },
             color = Yellow,
             trackColor = Color.DarkGray,
             strokeCap = ProgressIndicatorDefaults.LinearStrokeCap
@@ -131,14 +136,19 @@ fun ProgressBarLayout(modifier: Modifier, course: Course) {
                 .weight(1f)
                 .align(Alignment.CenterVertically),
             textAlign = TextAlign.Center,
-            text = "50%",
+            text = stringResource(
+                R.string.cp_progress_percentage,
+                course.progressNum
+            ),
             fontSize = 12.sp
         )
     }
 }
 
 @Composable
-fun ItemContent(course: Course) {
+fun ItemContent(course: ItemData) {
+    val tagTenantVisible by remember { mutableStateOf(course.isTenant) }
+
     Column(
         modifier = Modifier
             .fillMaxHeight()
@@ -149,13 +159,14 @@ fun ItemContent(course: Course) {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(end = 8.dp),
-            text = course.title.orEmpty()
+            text = course.title,
+            style = MaterialTheme.typography.titleMedium,
         )
 
         ConstraintLayout(
             modifier = Modifier.fillMaxWidth()
         ) {
-            val (dueDateId, tagTitleStatusId, icMoreId) = remember {
+            val (dueDateId, tagCourseStateId, tagTenantId, icMoreId) = remember {
                 createRefs()
             }
 
@@ -170,10 +181,20 @@ fun ItemContent(course: Course) {
             Text(
                 text = "必修",
                 fontSize = 12.sp,
-                modifier = Modifier.constrainAs(tagTitleStatusId) {
+                modifier = Modifier.constrainAs(tagCourseStateId) {
                     start.linkTo(dueDateId.end, margin = 8.dp)
                     bottom.linkTo(parent.bottom)
                 })
+
+            if (tagTenantVisible) {
+                Text(
+                    text = stringResource(id = R.string.lab_tenant),
+                    fontSize = 12.sp,
+                    modifier = Modifier.constrainAs(tagTenantId) {
+                        start.linkTo(tagCourseStateId.end, margin = 8.dp)
+                        bottom.linkTo(parent.bottom)
+                    })
+            }
 
             Icon(
                 modifier = Modifier.constrainAs(icMoreId) {

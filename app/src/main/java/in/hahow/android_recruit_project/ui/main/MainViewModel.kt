@@ -6,6 +6,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.hahow.data.local.ItemData
+import com.hahow.data.local.beItemViewData
 import com.hahow.domain.model.Course
 import com.hahow.domain.repository.CoursesRepository
 import com.hahow.network.Result
@@ -18,7 +20,7 @@ import kotlinx.coroutines.launch
 class MainViewModel(
     private val repository: CoursesRepository,
 ) : ViewModel() {
-    var courses by mutableStateOf<List<Course>>(listOf())
+    var courses by mutableStateOf<List<ItemData>>(listOf())
 
     init {
         initCourseData()
@@ -41,7 +43,7 @@ class MainViewModel(
 
                         is Result.Success -> {
                             Log.d(HAHOW_DEBUG_TAG, "Success")
-                            courses = result.data
+                            courses = result.data.beItemViewData()
                         }
                     }
                 }

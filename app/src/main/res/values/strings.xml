@@ -3,7 +3,13 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="lab_Main_title">Hahow homework</string>
     <string name="lab_over_date">已逾期</string>
+    <string name="lab_compulsory">必修</string>
+    <string name="lab_elective">選修</string>
+    <string name="lab_tenant">企業</string>
     <string name="cp_between_date">截止日剩 %s 天</string>
     <string name="cp_due_date">%s 截止</string>
     <string name="cp_pass_date">%s 通過</string>
+    <string name="cp_progress_percentage">%s%%</string>
+    <string name="cp_by">%s指派</string>
+    <string name="cp_review_before">%s 天前觀看</string>
 </resources>
