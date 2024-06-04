@@ -44,7 +44,7 @@ fun ItemView(
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .height(110.dp),
+            .height(120.dp),
     ) {
         Column(
             modifier = Modifier.weight(1f),
@@ -138,7 +138,7 @@ fun ProgressBarLayout(modifier: Modifier) {
 @Composable
 fun ItemContent() {
     Column(
-        modifier = Modifier.fillMaxHeight(),
+        modifier = Modifier.fillMaxHeight().padding(bottom = 8.dp, top = 8.dp),
         verticalArrangement = Arrangement.SpaceBetween
     ) {
         Text(
@@ -184,7 +184,7 @@ fun ItemContent() {
     }
 }
 
-@Preview(showBackground = true, heightDp = 110)
+@Preview(showBackground = true, heightDp = 120)
 @Composable
 fun ItemViewPreview() {
     AndroidrecruitprojectTheme {
