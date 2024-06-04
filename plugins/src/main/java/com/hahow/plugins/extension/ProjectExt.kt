@@ -17,6 +17,7 @@ internal fun Project.configureCompose(commonExtension: BaseExtension){
             "implementation"(libs.bundles.compose)
             "implementation"(libs.koin.compose)
             "implementation"(platform(libs.compose.bom))
+            "implementation" (libs.compose.constraintlayout)
             "androidTestImplementation"(platform(libs.compose.bom))
             "androidTestImplementation"(libs.androidx.compose.ui.test)
         }
