@@ -24,7 +24,10 @@ android {
     }
 }
 dependencies {
+    implementation(libs.test.mockwebserver)
+
     implementation(libs.bundles.material)
+    implementation(libs.coil)
     implementation(project(":common"))
     implementation(project(":data"))
     implementation(project(":domain"))

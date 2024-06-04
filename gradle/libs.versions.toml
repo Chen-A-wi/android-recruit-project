@@ -3,6 +3,8 @@ composeActivity = "1.9.0"
 androidJunit5 = "1.9.3.0"
 composeBom = "2024.05.00"
 buildGradle = "8.4.1"
+constraintlayout = "2.2.0-alpha13"
+constraintlayoutCompose = "1.1.0-alpha13"
 espressoCore = "3.5.1"
 ksp = "1.9.23-1.0.20"
 
@@ -22,6 +24,7 @@ appcompat = "1.7.0"
 material = "1.12.0"
 materialIcon = "1.6.7"
 paging = "3.3.0"
+coil = "2.6.0"
 
 okhttp = "4.12.0"
 retrofit2 = "2.11.0"
@@ -43,9 +46,11 @@ kotlin-bom = { module = "org.jetbrains.kotlin:kotlin-bom", version.ref = "kotlin
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
 androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }
 
 # Compose
 compose-activity = { module = "androidx.activity:activity-compose", version.ref = "composeActivity" }
+compose-constraintlayout = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "constraintlayoutCompose" }
 compose-ui = { module = "androidx.compose.ui:ui" }
 compose-ui-graphics = { module = "androidx.compose.ui:ui-graphics" }
 compose-ui-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
@@ -74,6 +79,7 @@ kotlinx-serialization-retrofit2 = { module = "com.jakewharton.retrofit:retrofit2
 # UI
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 material-icon = { module = "androidx.compose.material:material-icons-extended", version.ref = "materialIcon" }
+coil = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 
 # Paging
 paging-runtime = { module = "androidx.paging:paging-runtime", version.ref = "paging" }
@@ -104,7 +110,7 @@ truth = { module = "com.google.truth:truth", version.ref = "truth" }
 compose = [
     "compose-activity", "compose-ui", "compose-ui-graphics", "compose-ui-preview", "compose-material3"
 ]
-androidx = ["androidx-core-ktx", "androidx-lifecycle-runtime-ktx"]
+androidx = ["androidx-core-ktx", "androidx-lifecycle-runtime-ktx","androidx-constraintlayout"]
 debug = ["debug-compose-manifest", "debug-compose-tool"]
 test-runtime-only = ["junit-jupiter-engine", "junit-platform-console"]
 android-test = ["androidx-junit", "androidx-espresso-core"]

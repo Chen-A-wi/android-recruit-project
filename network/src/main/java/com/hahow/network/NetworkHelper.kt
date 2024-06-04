@@ -12,7 +12,7 @@ import okhttp3.mockwebserver.MockWebServer
 import retrofit2.Retrofit
 import java.util.concurrent.TimeUnit
 
-const val MOCK_WEB_SERVER_PORT = 4007
+const val MOCK_WEB_SERVER_PORT = 6666
 
 inline fun <reified T> createService(
     okHttpClient: OkHttpClient,
