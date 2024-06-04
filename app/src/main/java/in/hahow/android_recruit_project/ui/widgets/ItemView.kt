@@ -144,7 +144,7 @@ fun ItemContent() {
         Text(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(8.dp),
+                .padding(end = 8.dp),
             text = "百萬 YouTuber 攻心剪輯術：後製技巧與 YouTube 經營心法"
         )
 
@@ -159,7 +159,7 @@ fun ItemContent() {
                 text = "2023-07-14 通過",
                 fontSize = 12.sp,
                 modifier = Modifier.constrainAs(dueDateId) {
-                    start.linkTo(parent.start, margin = 8.dp)
+                    start.linkTo(parent.start)
                     bottom.linkTo(parent.bottom)
                 })
 
