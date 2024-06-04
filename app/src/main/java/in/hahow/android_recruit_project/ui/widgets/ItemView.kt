@@ -184,7 +184,7 @@ fun ItemContent() {
     }
 }
 
-@Preview(showBackground = true, heightDp = 600)
+@Preview(showBackground = true, heightDp = 110)
 @Composable
 fun ItemViewPreview() {
     AndroidrecruitprojectTheme {
