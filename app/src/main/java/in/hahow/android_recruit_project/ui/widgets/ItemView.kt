@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MoreVert
@@ -46,7 +47,7 @@ fun ItemView(
             .height(120.dp),
     ) {
         Column(
-            modifier = Modifier.weight(1f),
+            modifier = Modifier.width(140.dp),
             verticalArrangement = Arrangement.SpaceBetween
         ) {
             ImageCover(
@@ -58,7 +59,7 @@ fun ItemView(
             ProgressBarLayout(modifier = Modifier.weight(1f), course = course)
         }
         Column(
-            Modifier.weight(2f)
+            Modifier.fillMaxWidth()
         ) {
             ItemContent(course)
         }
