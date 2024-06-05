@@ -10,9 +10,9 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 
 class CoursesRepositoryImpl(
-    private val courseApi: CourseApi
+    private val courseApi: CourseApi,
 ) : CoursesRepository {
     override fun getCourses(): Flow<List<Course>> = flow {
         courseApi.getCourses().also { response -> emit(response) }
-    }.map (List<CourseSchema>::toDomain)
+    }.map(List<CourseSchema>::toDomain)
 }
