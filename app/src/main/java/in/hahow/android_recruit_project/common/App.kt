@@ -12,6 +12,7 @@ class App : BaseApp() {
     override fun onCreate() {
         super.onCreate()
 
+        // 啟動MockWebServer
         CoroutineScope(Dispatchers.IO).launch {
             mockServer.start(MOCK_WEB_SERVER_PORT)
         }

@@ -1,5 +1,9 @@
 package com.hahow.plugins.quality
 
+/**
+ * Ktlint plugin，Gradle 會自動 generation 相對應的 plugin class
+ */
+
 val ktlint: Configuration by configurations.creating
 
 dependencies {

@@ -47,7 +47,7 @@ import `in`.hahow.android_recruit_project.R
 
 @Composable
 fun ItemView(
-    course: ItemData
+    course: ItemData,
 ) {
     Row(
         modifier = Modifier
@@ -56,24 +56,25 @@ fun ItemView(
     ) {
         Column(
             modifier = Modifier.width(140.dp),
-            verticalArrangement = Arrangement.SpaceBetween
+            verticalArrangement = Arrangement.SpaceBetween,
         ) {
             ImageCover(
                 modifier = Modifier
                     .weight(2f)
                     .align(Alignment.CenterHorizontally),
-                course = course
+                course = course,
             )
             ProgressBarLayout(modifier = Modifier.weight(1f), course = course)
         }
         Column(
-            Modifier.fillMaxWidth()
+            Modifier.fillMaxWidth(),
         ) {
             ItemContent(course)
         }
     }
 }
 
+//region Item前半部（含圖片、進度條）
 @Composable
 fun ImageCover(modifier: Modifier, course: ItemData) {
     val tagSubscriptVisible by remember { mutableStateOf(course.subscripts.isVisible) }
@@ -84,7 +85,7 @@ fun ImageCover(modifier: Modifier, course: ItemData) {
         AsyncImage(
             contentScale = ContentScale.FillHeight,
             modifier = Modifier.clip(
-                shape = RoundedCornerShape(10.dp)
+                shape = RoundedCornerShape(10.dp),
             ),
             model = ImageRequest.Builder(LocalContext.current)
                 .data(course.imgUrl)
@@ -99,16 +100,17 @@ fun ImageCover(modifier: Modifier, course: ItemData) {
                         R.string.cp_by
                     } else {
                         R.string.cp_review_before
-                    }, course.subscripts.cpValue
+                    },
+                    course.subscripts.cpValue,
                 ),
                 modifier = Modifier
                     .align(Alignment.BottomEnd)
                     .clip(
-                        shape = RoundedCornerShape(topStart = 10.dp, bottomEnd = 10.dp)
+                        shape = RoundedCornerShape(topStart = 10.dp, bottomEnd = 10.dp),
                     )
                     .background(Color.DarkGray)
                     .padding(horizontal = 4.dp),
-                fontSize = 12.sp
+                fontSize = 12.sp,
             )
         }
     }
@@ -120,19 +122,19 @@ fun ProgressBarLayout(modifier: Modifier, course: ItemData) {
         modifier = modifier
             .padding(start = 8.dp)
             .fillMaxSize(),
-        horizontalArrangement = Arrangement.SpaceBetween
+        horizontalArrangement = Arrangement.SpaceBetween,
     ) {
         LinearProgressIndicator(
             modifier = Modifier
                 .weight(2f)
                 .align(Alignment.CenterVertically)
                 .clip(
-                    shape = RoundedCornerShape(6.dp)
+                    shape = RoundedCornerShape(6.dp),
                 ),
             progress = { course.progressValue },
             color = Yellow,
             trackColor = Color.DarkGray,
-            strokeCap = ProgressIndicatorDefaults.LinearStrokeCap
+            strokeCap = ProgressIndicatorDefaults.LinearStrokeCap,
         )
 
         Text(
@@ -142,13 +144,15 @@ fun ProgressBarLayout(modifier: Modifier, course: ItemData) {
             textAlign = TextAlign.Center,
             text = stringResource(
                 R.string.cp_progress_percentage,
-                course.progressNum
+                course.progressNum,
             ),
-            fontSize = 12.sp
+            fontSize = 12.sp,
         )
     }
 }
+//endregion
 
+//region Item內容
 @Composable
 fun ItemContent(course: ItemData) {
     val tagTenantVisible by remember { mutableStateOf(course.isTenant) }
@@ -158,7 +162,7 @@ fun ItemContent(course: ItemData) {
         modifier = Modifier
             .fillMaxHeight()
             .padding(bottom = 8.dp, top = 8.dp),
-        verticalArrangement = Arrangement.SpaceBetween
+        verticalArrangement = Arrangement.SpaceBetween,
     ) {
         Text(
             modifier = Modifier
@@ -169,7 +173,7 @@ fun ItemContent(course: ItemData) {
         )
 
         ConstraintLayout(
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
         ) {
             val (dueDateId, tagCourseStateId, tagTenantId, icMoreId) = remember {
                 createRefs()
@@ -184,13 +188,15 @@ fun ItemContent(course: ItemData) {
                         DueDateStateType.BETWEEN_DATE -> R.string.cp_between_date
                         DueDateStateType.FOREVER -> R.string.lab_forever
                         DueDateStateType.DEADLINE -> R.string.cp_deadline_date
-                    }, course.dueData.cpValue
+                    },
+                    course.dueData.cpValue,
                 ),
                 fontSize = 12.sp,
                 modifier = Modifier.constrainAs(dueDateId) {
                     start.linkTo(parent.start)
                     bottom.linkTo(parent.bottom)
-                })
+                },
+            )
 
             if (tagCourseStateVisible) {
                 Text(
@@ -199,7 +205,7 @@ fun ItemContent(course: ItemData) {
                             R.string.lab_compulsory
                         } else {
                             R.string.lab_elective
-                        }
+                        },
                     ),
                     fontWeight = FontWeight.Bold,
                     color = if (course.courseState == CourseStateType.COMPULSORY) {
@@ -211,7 +217,8 @@ fun ItemContent(course: ItemData) {
                     modifier = Modifier.constrainAs(tagCourseStateId) {
                         start.linkTo(dueDateId.end, margin = 8.dp)
                         bottom.linkTo(parent.bottom)
-                    })
+                    },
+                )
             }
 
             if (tagTenantVisible) {
@@ -223,7 +230,8 @@ fun ItemContent(course: ItemData) {
                     modifier = Modifier.constrainAs(tagTenantId) {
                         start.linkTo(tagCourseStateId.end, margin = 8.dp)
                         bottom.linkTo(parent.bottom)
-                    })
+                    },
+                )
             }
 
             Icon(
@@ -238,3 +246,4 @@ fun ItemContent(course: ItemData) {
         }
     }
 }
+//endregion

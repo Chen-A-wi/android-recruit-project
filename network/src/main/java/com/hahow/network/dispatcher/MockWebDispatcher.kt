@@ -8,6 +8,11 @@ import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.RecordedRequest
 import kotlin.properties.Delegates
 
+/**
+ * 處理MockWebServer攔截的Request及回傳的Response
+ *
+ * @param assetsReader Json讀取工具 See[com.hahow.common.utils.AssetsReaderImpl]
+ */
 class MockWebDispatcher(private val assetsReader: AssetsReader) : Dispatcher() {
     override fun dispatch(request: RecordedRequest): MockResponse {
         var requestPath by Delegates.notNull<String>()
@@ -27,6 +32,12 @@ class MockWebDispatcher(private val assetsReader: AssetsReader) : Dispatcher() {
         }
     }
 
+    /**
+     * 回傳的Response
+     *
+     * @param respCode ex: 200, 404
+     * @param assetsPath resources 檔案路徑
+     */
     private fun mockResp(respCode: Int = 200, assetsPath: String): MockResponse {
         return MockResponse()
             .setResponseCode(respCode)
