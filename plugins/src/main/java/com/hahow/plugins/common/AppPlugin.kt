@@ -11,6 +11,9 @@ import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.the
 
+/**
+ * 自定義App gradle plugin
+ */
 class AppPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {

@@ -13,6 +13,9 @@ import org.gradle.kotlin.dsl.the
 import org.jetbrains.kotlin.konan.properties.Properties
 import kotlin.properties.Delegates
 
+/**
+ * 自定義Module gradle plugin
+ */
 class BaseLibPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {

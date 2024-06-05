@@ -84,3 +84,30 @@
 
 - 請下載或 fork Hahow Android Engineer 面試題目初始專案。
 - 請將成果上傳至 GitHub 並直接提供 repo 連結。
+
+---
+
+# Check list
+
+- [x] 程式碼使用 Kotlin 撰寫。
+- [x] 使用 Compose。
+- [x] 註解。
+- [x] 撰寫測試。
+- [x] Target 34。
+- [x] 使用courses.json作為資料來源。
+
+# Tech stack & Open-source libraries
+
+- 使用 Material3
+- 100% Kotlin
+- 使用 Koin 進行 injection
+- 使用 Coroutines & Flow 處理 API
+- 使用 Truth 搭配 Junit5 做 DateTime 測試
+- 使用 Ktlint format code
+- 模組化
+- 使用 MockWebServer 模擬 API
+- 使用 version catalog 管理 dependencies
+- 使用 composite build
+
+# Demo
+![手機畫面](https://res.cloudinary.com/deu7aohfe/image/upload/v1717589927/github/hzxijzoqbcpngudiiigi.webp)
