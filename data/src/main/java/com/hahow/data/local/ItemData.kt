@@ -1,10 +1,8 @@
 package com.hahow.data.local
 
-import androidx.annotation.StringRes
 import com.hahow.common.extension.betweenDay
 import com.hahow.common.extension.localDateTimeFromISO
 import com.hahow.common.extension.orZero
-import com.hahow.data.R
 import com.hahow.domain.model.Course
 import java.time.LocalDateTime
 
@@ -13,7 +11,7 @@ enum class CourseStateType {
 }
 
 enum class DueDateStateType {
-    PASS, OVER_DATE,
+    PASS, OVER_DATE, BETWEEN_DATE
 }
 
 enum class SubscriptType {
@@ -42,7 +40,7 @@ fun List<Course>.beItemViewData(): List<ItemData> = map { course ->
         title = course.title.orEmpty(),
         dueDate = "",
         subscripts = getSubscriptsType(course),
-        courseState = CourseStateType.COMPULSORY,
+        courseState = getCourseType(course),
         isTenant = course.source?.equals("TENANT_COURSE") ?: false,
         imgUrl = course.coverImageUrl.orEmpty(),
         progressValue = course.completionPercentage.orZero().toFloat(),
@@ -65,4 +63,20 @@ private fun getSubscriptsType(course: Course): SubscriptsData {
             course.lastViewedAt?.localDateTimeFromISO?.betweenDay(today)?.toString().orEmpty()
         }
     )
+}
+
+private fun getCourseType(course: Course): CourseStateType {
+    return when (course.recentStartedAssignment?.rule.orEmpty()) {
+        CourseStateType.COMPULSORY.name -> {
+            CourseStateType.COMPULSORY
+        }
+
+        CourseStateType.ELECTIVE.name -> {
+            CourseStateType.ELECTIVE
+        }
+
+        else -> {
+            CourseStateType.NONE
+        }
+    }
 }

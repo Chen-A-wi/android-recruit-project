@@ -1,5 +1,6 @@
 package `in`.hahow.android_recruit_project.ui.widgets
 
+import androidx.annotation.StringRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -31,12 +32,15 @@ import androidx.compose.ui.graphics.Color.Companion.Yellow
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.core.graphics.toColorInt
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import com.hahow.data.local.CourseStateType
 import com.hahow.data.local.ItemData
 import com.hahow.data.local.SubscriptType
 import `in`.hahow.android_recruit_project.R
@@ -148,6 +152,7 @@ fun ProgressBarLayout(modifier: Modifier, course: ItemData) {
 @Composable
 fun ItemContent(course: ItemData) {
     val tagTenantVisible by remember { mutableStateOf(course.isTenant) }
+    val tagCourseStateVisible by remember { mutableStateOf(course.courseState != CourseStateType.NONE) }
 
     Column(
         modifier = Modifier
@@ -178,17 +183,33 @@ fun ItemContent(course: ItemData) {
                     bottom.linkTo(parent.bottom)
                 })
 
-            Text(
-                text = "必修",
-                fontSize = 12.sp,
-                modifier = Modifier.constrainAs(tagCourseStateId) {
-                    start.linkTo(dueDateId.end, margin = 8.dp)
-                    bottom.linkTo(parent.bottom)
-                })
+            if (tagCourseStateVisible) {
+                Text(
+                    text = stringResource(
+                        id = if (course.courseState == CourseStateType.COMPULSORY) {
+                            R.string.lab_compulsory
+                        } else {
+                            R.string.lab_elective
+                        }
+                    ),
+                    fontWeight = FontWeight.Bold,
+                    color = if (course.courseState == CourseStateType.COMPULSORY) {
+                        Color("#b62d3f".toColorInt())
+                    } else {
+                        MaterialTheme.colorScheme.onSecondaryContainer
+                    },
+                    fontSize = 12.sp,
+                    modifier = Modifier.constrainAs(tagCourseStateId) {
+                        start.linkTo(dueDateId.end, margin = 8.dp)
+                        bottom.linkTo(parent.bottom)
+                    })
+            }
 
             if (tagTenantVisible) {
                 Text(
                     text = stringResource(id = R.string.lab_tenant),
+                    fontWeight = FontWeight.Bold,
+                    color = Color("#c2ecf8".toColorInt()),
                     fontSize = 12.sp,
                     modifier = Modifier.constrainAs(tagTenantId) {
                         start.linkTo(tagCourseStateId.end, margin = 8.dp)
