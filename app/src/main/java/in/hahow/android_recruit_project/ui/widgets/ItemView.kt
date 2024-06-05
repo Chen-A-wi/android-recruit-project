@@ -1,6 +1,5 @@
 package `in`.hahow.android_recruit_project.ui.widgets
 
-import androidx.annotation.StringRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -41,6 +40,7 @@ import androidx.core.graphics.toColorInt
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.hahow.data.local.CourseStateType
+import com.hahow.data.local.DueDateStateType
 import com.hahow.data.local.ItemData
 import com.hahow.data.local.SubscriptType
 import `in`.hahow.android_recruit_project.R
@@ -176,7 +176,16 @@ fun ItemContent(course: ItemData) {
             }
 
             Text(
-                text = "2023-07-14 通過",
+                text = stringResource(
+                    id = when (course.dueData.status) {
+                        DueDateStateType.PASS_DATE -> R.string.cp_pass_date
+                        DueDateStateType.OVER_DATE -> R.string.lab_over_date
+                        DueDateStateType.TODAY -> R.string.cp_today
+                        DueDateStateType.BETWEEN_DATE -> R.string.cp_between_date
+                        DueDateStateType.FOREVER -> R.string.lab_forever
+                        DueDateStateType.DEADLINE -> R.string.cp_deadline_date
+                    }, course.dueData.cpValue
+                ),
                 fontSize = 12.sp,
                 modifier = Modifier.constrainAs(dueDateId) {
                     start.linkTo(parent.start)

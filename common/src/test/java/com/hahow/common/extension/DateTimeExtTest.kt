@@ -49,6 +49,14 @@ class DateTimeExtTest {
     }
 
     @Test
+    @DisplayName("測試 LocalDateTime Null Format")
+    fun dateFormatNullTest() {
+        val localDate = null?.localDateTimeFromISO?.toTimestamp()?.toLocalDate()?.text().orEmpty()
+
+        localDate shouldBe ""
+    }
+
+    @Test
     @DisplayName("測試相差天數")
     fun betweenDayTest() {
         val fakeTodayDateTime = "2024-05-31T15:59:02Z".localDateTimeFromISO

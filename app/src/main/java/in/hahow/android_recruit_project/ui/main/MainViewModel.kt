@@ -8,7 +8,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hahow.data.local.ItemData
 import com.hahow.data.local.beItemViewData
-import com.hahow.domain.model.Course
 import com.hahow.domain.repository.CoursesRepository
 import com.hahow.network.Result
 import com.hahow.network.asResult
